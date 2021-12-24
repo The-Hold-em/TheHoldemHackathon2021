@@ -1,0 +1,5 @@
+[KULLANILMIYOR]Gateway:8265
+IdentityServer:8263
+Services
+	[KULLANILMIYOR]-ws:8264
+	
