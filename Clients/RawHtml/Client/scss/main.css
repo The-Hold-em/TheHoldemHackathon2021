@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap");
+input {
+  width: 60%;
+  height: 4%;
+  border: 1px solid #707070;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+button {
+  color: white;
+  background-color: #0095F6;
+  width: 60%;
+  height: 4%;
+  border: 0;
+  border-radius: 15px;
+}
+
+body {
+  border: 1px solid #707070;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  padding: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Montserrat", sans-serif;
+}
+
+body .image {
+  background-image: url("../../img/loginimg.jpg");
+  height: 100vh;
+  width: 874px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body .form {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .form h2 {
+  padding-top: 10%;
+}
+
+body .form .logo {
+  background-image: url("../../img/logo.png");
+  height: 120px;
+  width: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*# sourceMappingURL=main.css.map */

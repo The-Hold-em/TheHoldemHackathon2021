@@ -1,0 +1,40 @@
+    @import "./common/color";
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap");
+    @import "./common/input-style";
+    @import "./common/responsive-mixins";
+    @import "./common/submit-button";
+    body {
+        border: 1px solid $border-color;
+        display: flex;
+        width: 80%;
+        margin: auto;
+        padding: 0;
+        flex-direction: row;
+        font-family: "Montserrat", sans-serif;
+        .image {
+            background-image: url("../../img/loginimg.jpg");
+            height: 100vh;
+            width: 874px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .form {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h2 {
+                padding-top: 10%;
+            }
+            .logo {
+                background-image: url("../../img/logo.png");
+                height: 120px;
+                width: 120px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    }
