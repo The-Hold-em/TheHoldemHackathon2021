@@ -1,0 +1,21 @@
+{
+  "name": "voting",
+  "version": "1.0.0",
+  "description": "Blockchain voting system",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
+  }
+}
