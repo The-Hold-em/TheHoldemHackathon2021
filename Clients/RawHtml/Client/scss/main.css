@@ -7,6 +7,13 @@ input {
   margin-bottom: 30px;
 }
 
+input[type=text],
+input[type=password] {
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 button {
   color: white;
   background-color: #0095F6;
@@ -14,10 +21,19 @@ button {
   height: 4%;
   border: 0;
   border-radius: 15px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.image {
+  height: 100vh;
+  width: 874px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
-  border: 1px solid #707070;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,13 +47,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-body .image {
+body .register-image {
+  background-image: url("../../img/registerimg.jpg");
+}
+
+body .login-image {
   background-image: url("../../img/loginimg.jpg");
-  height: 100vh;
-  width: 874px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 body .form {
@@ -55,10 +70,11 @@ body .form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-right: 1px solid #707070;
 }
 
 body .form h2 {
-  padding-top: 10%;
+  padding-bottom: 5%;
 }
 
 body .form .logo {
@@ -68,5 +84,9 @@ body .form .logo {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+body .form p {
+  font-size: 13px;
 }
 /*# sourceMappingURL=main.css.map */

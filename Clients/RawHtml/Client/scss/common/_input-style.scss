@@ -5,3 +5,9 @@ input {
     border-radius: 15px;
     margin-bottom: 30px;
 }
+
+input[type=text],
+input[type=password] {
+    padding: 0 10px;
+    box-sizing: border-box;
+}

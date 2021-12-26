@@ -3,21 +3,20 @@
     @import "./common/input-style";
     @import "./common/responsive-mixins";
     @import "./common/submit-button";
+    @import "./common/image";
     body {
-        border: 1px solid $border-color;
         display: flex;
         width: 80%;
         margin: auto;
         padding: 0;
         flex-direction: row;
         font-family: "Montserrat", sans-serif;
-        .image {
+        // REGISTER SCSS
+        .register-image {
+            background-image: url("../../img/registerimg.jpg");
+        }
+        .login-image {
             background-image: url("../../img/loginimg.jpg");
-            height: 100vh;
-            width: 874px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
         }
         .form {
             width: 40%;
@@ -25,8 +24,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            border-right: 1px solid $border-color;
             h2 {
-                padding-top: 10%;
+                padding-bottom: 5%;
             }
             .logo {
                 background-image: url("../../img/logo.png");
@@ -35,6 +35,9 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
+            }
+            p {
+                font-size: 13px;
             }
         }
     }
