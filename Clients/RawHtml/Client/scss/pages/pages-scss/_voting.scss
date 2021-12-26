@@ -1,0 +1,47 @@
+.vote-page {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .candidates {
+        display: flex;
+        flex-direction: row;
+        .candidate {
+            margin: 170px 20px;
+            margin-bottom: 100px;
+            padding: 50px 70px;
+            border: 1px solid $border-color;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .candidate-img {
+                background-image: url("../../img/personimg.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: 2px solid $border-color;
+                height: 120px;
+                width: 120px;
+            }
+            .circle {
+                padding: 50px;
+                border: 1px solid $border-color;
+                border-radius: 50%;
+                margin: 20px 0;
+            }
+            .name {
+                border: 1px solid $border-color;
+                padding: 0 5px;
+                h3 {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+    button {
+        height: 40px;
+        width: 12vw;
+    }
+}

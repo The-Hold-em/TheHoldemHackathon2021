@@ -4,6 +4,8 @@
     @import "./common/responsive-mixins";
     @import "./common/submit-button";
     @import "./common/image";
+    //pages
+    @import "../scss/pages/pages-scss/voting";
     body {
         display: flex;
         width: 80%;
