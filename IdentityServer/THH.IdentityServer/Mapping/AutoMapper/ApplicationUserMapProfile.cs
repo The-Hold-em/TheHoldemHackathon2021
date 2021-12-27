@@ -12,6 +12,7 @@ namespace THH.IdentityServer.Mapping.AutoMapper
         {
             CreateMap<ApplicationUser, ApplicationUserDto>().ReverseMap();
             CreateMap<ApplicationUser, SignUpViewModel>().ReverseMap();
+            CreateMap<ApplicationUser, UpdateModel>().ReverseMap();
         }
     }
 }

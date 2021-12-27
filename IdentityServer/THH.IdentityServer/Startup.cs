@@ -79,7 +79,7 @@ namespace THH.IdentityServer
 
             services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
             {
-                opt.User.RequireUniqueEmail = true;
+                opt.User.RequireUniqueEmail = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()

@@ -12,6 +12,7 @@ using IdentityModel;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace THH.IdentityServer.Services
 {
@@ -35,12 +36,12 @@ namespace THH.IdentityServer.Services
                     { "ErrorData", Error.SendError(
                             path:"api/user/signin",
                             isShow:true,
-                            errors:"Kullanıcı adı veya parolanız hatalı"
+                            errors:"Kimlik numarası veya parolanız hatalı"
                         ) },
                 };
             }
 
-            ApplicationUser existUser = await _userManager.FindByNameAsync(context.UserName);
+            ApplicationUser existUser = await _userManager.Users.FirstOrDefaultAsync(x=>x.IdentityNumber==context.UserName);
             if (existUser is null)
             {
                 context.Result.CustomResponse = errors();

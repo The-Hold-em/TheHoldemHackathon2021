@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace THH.IdentityServer.Seeding
 {
@@ -49,7 +50,7 @@ namespace THH.IdentityServer.Seeding
 
             foreach (SignUpViewModel model in DefaultUsersAndRoles.GetDevelopers())
             {
-                ApplicationUser found = await userManager.FindByNameAsync(model.UserName);
+                ApplicationUser found = await userManager.Users.FirstOrDefaultAsync(x=>x.IdentityNumber==model.IdentityNumber);
                 if (found != null) continue;
 
                 ApplicationUser user = mapper.Map<ApplicationUser>(model);

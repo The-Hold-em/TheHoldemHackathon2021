@@ -40,10 +40,10 @@ namespace THH.IdentityServer.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(maxLength: 40, nullable: true),
-                    LastName = table.Column<string>(maxLength: 40, nullable: true),
-                    IdentityNumber = table.Column<string>(maxLength: 11, nullable: true),
-                    Address = table.Column<string>(maxLength: 200, nullable: true)
+                    FirstName = table.Column<string>(maxLength: 40, nullable: false),
+                    LastName = table.Column<string>(maxLength: 40, nullable: false),
+                    IdentityNumber = table.Column<string>(maxLength: 11, nullable: false),
+                    DateOfBirth = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

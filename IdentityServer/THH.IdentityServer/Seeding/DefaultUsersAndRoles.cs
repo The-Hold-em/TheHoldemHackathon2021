@@ -13,21 +13,22 @@ namespace THH.IdentityServer.Seeding
         {
             yield return new SignUpViewModel()
             {
-                UserName = "Daniga",
-                Email = "me@senrecep.com",
+                UserName= "72406043028",
                 Password = "Password12*",
-                Address="Istanbul",
-                FirstName="Recep",
-                LastName="Şen",
-                PhoneNumber="05319649002",
-                IdentityNumber="11111111111"
+                FirstName = "Recep",
+                LastName = "Şen",
+                IdentityNumber = "72406043028",
+                DateOfBirth = new System.DateTime(2000, 06, 13)
+                //UserName = "Daniga",
+                //Email = "me@senrecep.com",
+                //Address="Istanbul",
+                //PhoneNumber="05319649002",
             };
         }
         public static IEnumerable<IdentityRole> GetRoles()
         {
             yield return new IdentityRole(RoleInfo.Admin);
-            yield return new IdentityRole(RoleInfo.Executive);
-            yield return new IdentityRole(RoleInfo.Engineer);
+            yield return new IdentityRole(RoleInfo.User);
         }
     }
 
