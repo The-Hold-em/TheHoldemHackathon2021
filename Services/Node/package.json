@@ -1,5 +1,5 @@
 {
-  "name": "pollingstationservice",
+  "name": "nodeservice",
   "version": "1.0.0",
   "description": "Blockchain voting system",
   "main": "index.js",
