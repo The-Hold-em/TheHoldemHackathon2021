@@ -1,13 +1,14 @@
 input {
-    width: 60%;
-    height: 4%;
+    width: 70%;
+    padding: 2%;
     border: 1px solid $border-color;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+  
 }
 
 input[type=text],
 input[type=password] {
-    padding: 0 10px;
+    padding: auto 15x;
     box-sizing: border-box;
 }
