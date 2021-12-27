@@ -7,15 +7,20 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.24.0",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.1",
     "crypto-js": "^4.1.1",
+    "dotenv": "^10.0.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "setinterval": "^0.2.4"
   }
 }
