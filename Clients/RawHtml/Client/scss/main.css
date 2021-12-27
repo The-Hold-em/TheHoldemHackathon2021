@@ -61,7 +61,7 @@ button {
 }
 
 .vote-page .candidates .candidate {
-  margin: 170px 20px;
+  margin: 150px 20px;
   margin-bottom: 100px;
   padding: 50px 70px;
   border: 1px solid #707070;
@@ -103,7 +103,15 @@ button {
 }
 
 .vote-page .candidates .candidate .name h3 {
+  margin: 2px;
   font-size: 10px;
+}
+
+.vote-page .candidates .circle:hover {
+  background-image: url("../../img/checked.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .vote-page button {
