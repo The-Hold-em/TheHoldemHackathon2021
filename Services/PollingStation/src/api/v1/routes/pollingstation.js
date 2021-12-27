@@ -11,4 +11,5 @@ router.post(
   PollingStationControllerTest.sendVoteListToNode
 );
 router.post("/test", PollingStationControllerTest.recevie_vote_test);
+
 module.exports = router;
