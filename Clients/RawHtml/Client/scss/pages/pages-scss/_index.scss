@@ -1,0 +1,29 @@
+.container{
+    width: 80%;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    flex-direction: column;
+    align-items: left;
+    //justify-content: center;
+    margin-top: 15vh;
+    height: 90vh;
+    .textt{
+        margin:0 0 5px;
+        width: 10px;
+        inline-size: 500px;
+    overflow-wrap: break-word;
+    }
+    .buttons
+    {
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        justify-content: space-around;
+        align-items: center;
+        button{
+            width: 90px;
+        }
+
+    }
+}

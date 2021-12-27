@@ -34,12 +34,12 @@ button {
 }
 
 nav {
-  background-color: #00B0F8;
+  background-color: #1eb4e9;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 20;
+  margin-top: 20px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -392,6 +392,51 @@ nav .nav .menu {
   padding: 20px 0;
 }
 
+.container {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  margin-top: 15vh;
+  height: 90vh;
+}
+
+.container .textt {
+  margin: 0 0 5px;
+  width: 10px;
+  inline-size: 500px;
+  overflow-wrap: break-word;
+}
+
+.container .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 200px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .buttons button {
+  width: 90px;
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -400,6 +445,10 @@ body {
   margin: auto;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 body .register-image {

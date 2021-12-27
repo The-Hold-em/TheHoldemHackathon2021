@@ -9,12 +9,15 @@
     @import "../scss/pages/pages-scss/voting";
     @import "../scss/pages/pages-scss/voted";
     @import "../scss/pages/pages-scss/main-menu";
+    @import "../scss/pages/pages-scss/index";
     body {
         display: flex;
         width: 100%;
         margin: auto;
         padding: 0;
         font-family: "Montserrat", sans-serif;
+        flex-direction:column;
+        
        
         // REGISTER SCSS
         .register-image {
