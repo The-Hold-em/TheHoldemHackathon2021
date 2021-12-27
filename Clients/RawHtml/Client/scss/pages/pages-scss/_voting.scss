@@ -1,0 +1,76 @@
+.vote-page {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+   
+    .candidates {
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        align-items: center;
+        margin-bottom:50px;
+    justify-content: center;
+        .candidate {
+           margin: 10px;
+            padding: 10px 20px;
+            display: flex;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+            }
+            
+            .candidate-img {
+                background-image: url("../../img/personimg.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100px;
+                width: 120px;
+            }
+            .circle {
+                padding: 30px;
+                border: 1px solid $border-color;
+                border-radius: 50%;
+                margin: 25px 10px;
+            }
+            &.active
+            {
+                transform: translateY(-20px);
+                .circle {
+                    background-image: url("../../img/checked.png");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+            .name {
+               // border: 1px solid $border-color;
+               text-transform: uppercase;
+                padding: 0 5px;
+                h3 {
+                    margin: 2px;
+                    font-size: 10px;
+                }
+            }
+        }
+        .circle:hover {
+            background-image: url("../../img/checked.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+    button {
+        width: 20%;
+    padding: 2vh 2%;
+        
+    }
+}
