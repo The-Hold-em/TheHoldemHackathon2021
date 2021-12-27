@@ -6,40 +6,48 @@
     @import "./common/image";
     //pages
     @import "../scss/pages/pages-scss/voting";
+    @import "../scss/pages/pages-scss/main-menu";
     body {
         display: flex;
-        width: 80%;
+        width: 100%;
         margin: auto;
         padding: 0;
         flex-direction: row;
         font-family: "Montserrat", sans-serif;
-        // REGISTER SCSS
-        .register-image {
-            background-image: url("../../img/registerimg.jpg");
-        }
-        .login-image {
-            background-image: url("../../img/loginimg.jpg");
-        }
-        .form {
-            width: 40%;
+        .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-right: 1px solid $border-color;
-            h2 {
-                padding-bottom: 5%;
+            width: 80%;
+            margin: auto;
+            padding: 0;
+            flex-direction: row;
+            // REGISTER SCSS
+            .register-image {
+                background-image: url("../../img/registerimg.jpg");
             }
-            .logo {
-                background-image: url("../../img/logo.png");
-                height: 120px;
-                width: 120px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+            .login-image {
+                background-image: url("../../img/loginimg.jpg");
             }
-            p {
-                font-size: 13px;
+            .form {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-right: 1px solid $border-color;
+                h2 {
+                    padding-bottom: 5%;
+                }
+                .logo {
+                    background-image: url("../../img/logo.png");
+                    height: 120px;
+                    width: 120px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                p {
+                    font-size: 13px;
+                }
             }
         }
     }

@@ -1,0 +1,107 @@
+    .main-menu {
+        width: 100%;
+        .navbar {
+            width: 100%;
+            background-color: #0095F6;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            .nav-title {
+                color: white;
+                font-weight: 700;
+                padding-left: 200px;
+            }
+            .choose-title {
+                color: white;
+                font-weight: 300;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-right: 200px;
+                h3 {
+                    margin: 0 10px;
+                }
+            }
+        }
+        .choosing-menu {
+            width: 80%;
+            height: 80vh;
+            margin: auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .line-1 {
+                display: flex;
+                flex-direction: row;
+                padding: 10px 0;
+                .type-1 {
+                    position: relative;
+                    border: 1px solid $border-color;
+                    border-radius: 12px;
+                    padding: 25px 125px;
+                    margin: 0 10px;
+                    h3 {
+                        position: absolute;
+                        left: 25px;
+                        top: 0;
+                    }
+                    h2 {
+                        padding: 20px 0;
+                    }
+                }
+                .type-2 {
+                    position: relative;
+                    border: 1px solid $border-color;
+                    border-radius: 12px;
+                    padding: 25px 125px;
+                    margin: 0 10px;
+                    h3 {
+                        position: absolute;
+                        left: 25px;
+                        top: 0;
+                    }
+                    h2 {
+                        padding: 20px 0;
+                    }
+                }
+            }
+            .line-2 {
+                display: flex;
+                flex-direction: row;
+                padding: 10px 0;
+                .type-3 {
+                    position: relative;
+                    border: 1px solid $border-color;
+                    border-radius: 12px;
+                    padding: 25px 125px;
+                    margin: 0 10px;
+                    h3 {
+                        position: absolute;
+                        left: 25px;
+                        top: 0;
+                    }
+                    h2 {
+                        padding: 20px 0;
+                    }
+                }
+                .type-4 {
+                    position: relative;
+                    border: 1px solid $border-color;
+                    border-radius: 12px;
+                    padding: 25px 125px;
+                    margin: 0 10px;
+                    h3 {
+                        position: absolute;
+                        left: 25px;
+                        top: 0;
+                    }
+                    h2 {
+                        padding: 20px 0;
+                    }
+                }
+            }
+        }
+    }
