@@ -17,8 +17,10 @@ using THH.IdentityServer.Dtos;
 using THH.IdentityServer.Models;
 using THH.Shared.Core.ExtensionMethods;
 using THH.Shared.Core.Response;
+using THH.Shared.Core.StringInfo;
 
 using static Duende.IdentityServer.IdentityServerConstants;
+using static Mernis.KPSPublicSoapClient;
 
 namespace THH.IdentityServer.Controllers
 {
@@ -55,14 +57,28 @@ namespace THH.IdentityServer.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModel model)
         {
+            model.UserName = model.IdentityNumber;
             ApplicationUser user = _mapper.Map<ApplicationUser>(model);
+
+            using var service = new Mernis.KPSPublicSoapClient(EndpointConfiguration.KPSPublicSoap);
+            Mernis.TCKimlikNoDogrulaResponse status = await service.TCKimlikNoDogrulaAsync(long.Parse(model.IdentityNumber), model.FirstName.ToUpper(), model.LastName.ToUpper(), model.DateOfBirth.Year);
+            if (!status.Body.TCKimlikNoDogrulaResult)
+                return Response<NoContent>.Fail(
+                      statusCode: StatusCodes.Status400BadRequest,
+                      isShow: true,
+                      path: $"api/User/Mernis",
+                      errors: "Girdiğiniz bilgilerle eşleşen TC. vatandaşlığı bulunamadı"
+                      ).CreateResponseInstance();
+
 
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return GetResult(result, "SignUp");
 
-
-            IdentityResult roleResult = await _userManager.AddToRolesAsync(user, model.Roles);
+            //if (model.Roles.IsNull() || (model.Roles.IsNotNull() && !model.Roles.Any()))
+            //    model.Roles = new List<string>() { RoleInfo.User };
+            //IdentityResult roleResult = await _userManager.AddToRolesAsync(user, model.Roles);
+            var roleResult = await _userManager.AddToRoleAsync(user, RoleInfo.User);
 
             if (!roleResult.Succeeded)
                 return GetResult(roleResult, "SignUp_AddRole");
@@ -71,7 +87,7 @@ namespace THH.IdentityServer.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(ApplicationUserDto dto)
+        public async Task<IActionResult> Update(UpdateModel dto)
         {
             ApplicationUser updateModel = _mapper.Map<ApplicationUser>(dto);
             ApplicationUser user = await _userManager.FindByIdAsync(updateModel.Id);
@@ -82,23 +98,24 @@ namespace THH.IdentityServer.Controllers
               errors: "Gecerli bir kullanici bulunamadi"
               ).CreateResponseInstance();
 
-            if (!user.Email.Equals(updateModel.Email))
-            {
-                IdentityResult emailResponse = await _userManager.SetEmailAsync(user, updateModel.Email);
-                if (!emailResponse.Succeeded) return GetResult(emailResponse, "UpdateEmail");
-            }
+            //if (!user.Email.Equals(updateModel.Email))
+            //{
+            //    IdentityResult emailResponse = await _userManager.SetEmailAsync(user, updateModel.Email);
+            //    if (!emailResponse.Succeeded) return GetResult(emailResponse, "UpdateEmail");
+            //}
 
-            if (!user.PhoneNumber.Equals(updateModel.PhoneNumber))
-            {
-                IdentityResult res = await _userManager.SetPhoneNumberAsync(user, updateModel.PhoneNumber);
-                if (!res.Succeeded) return GetResult(res, "UpdatePhoneNumber");
-            }
+            //if (!user.PhoneNumber.Equals(updateModel.PhoneNumber))
+            //{
+            //    IdentityResult res = await _userManager.SetPhoneNumberAsync(user, updateModel.PhoneNumber);
+            //    if (!res.Succeeded) return GetResult(res, "UpdatePhoneNumber");
+            //}
 
-            if (!user.UserName.Equals(updateModel.UserName))
-            {
-                IdentityResult res = await _userManager.SetUserNameAsync(user, updateModel.UserName);
-                if (!res.Succeeded) return GetResult(res, "UpdateUserName");
-            }
+            //if (!user.UserName.Equals(updateModel.UserName))
+            //{
+            //    IdentityResult res = await _userManager.SetUserNameAsync(user, updateModel.UserName);
+            //    if (!res.Succeeded) return GetResult(res, "UpdateUserName");
+            //}
+
 
 
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
@@ -110,18 +127,19 @@ namespace THH.IdentityServer.Controllers
             user.FirstName = updateModel.FirstName;
             user.LastName = updateModel.LastName;
             user.IdentityNumber = updateModel.IdentityNumber;
-            user.Address = updateModel.Address;
+            user.UserName = updateModel.IdentityNumber;
+            user.DateOfBirth = updateModel.DateOfBirth;
+            //user.Address = updateModel.Address;
             IdentityResult updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
                 return GetResult(updateResult, "UpdateUser");
 
-            IList<string> userRoles = await _userManager.GetRolesAsync(user);
-            _logger.LogInformation($"Update Dto Roles: ${dto.Roles.IsNotNull()} {dto.Roles?.Count()}");
-            _logger.LogInformation($"User Roles: ${userRoles.IsNotNull()} {userRoles?.Count()}");
-            IEnumerable<string> deleteRoles = userRoles?.Where(x => !dto.Roles.Contains(x));
-            IEnumerable<string> addRoles = dto.Roles?.Where(x => !userRoles.Contains(x));
-            await _userManager.RemoveFromRolesAsync(user, deleteRoles);
-            await _userManager.AddToRolesAsync(user, addRoles);
+            //IList<string> userRoles = await _userManager.GetRolesAsync(user);
+            //IEnumerable<string> deleteRoles = userRoles?.Where(x => !dto.Roles.Contains(x));
+            //IEnumerable<string> addRoles = dto.Roles?.Where(x => !userRoles.Contains(x));
+            //await _userManager.RemoveFromRolesAsync(user, deleteRoles);
+            //await _userManager.AddToRolesAsync(user, addRoles);
+
             return Response<NoContent>.Success().CreateResponseInstance();
         }
         [HttpGet]
@@ -177,7 +195,6 @@ namespace THH.IdentityServer.Controllers
 
         private IActionResult GetResult(IdentityResult result, string action = "UpdateProfile")
         {
-
             Response<NoContent> response = Response<NoContent>.Fail(
                       statusCode: StatusCodes.Status400BadRequest,
                       isShow: true,

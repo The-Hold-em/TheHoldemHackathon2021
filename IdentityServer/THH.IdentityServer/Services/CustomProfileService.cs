@@ -30,7 +30,6 @@ namespace THH.IdentityServer.Services
 
             List<Claim> claims = new List<Claim>()
             {
-               new Claim(JwtRegisteredClaimNames.Email, user.Email),
                new Claim( "name", user.UserName),
             };
 
