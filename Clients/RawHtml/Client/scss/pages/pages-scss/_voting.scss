@@ -1,5 +1,7 @@
 .vote-page {
+    width: 80%;
     display: flex;
+    margin: auto;
     padding: 0;
     flex-direction: column;
     align-items: center;
@@ -54,9 +56,16 @@
                text-transform: uppercase;
                 padding: 0 5px;
                 h3 {
+                    margin: 2px;
                     font-size: 10px;
                 }
             }
+        }
+        .circle:hover {
+            background-image: url("../../img/checked.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     }
     button {
