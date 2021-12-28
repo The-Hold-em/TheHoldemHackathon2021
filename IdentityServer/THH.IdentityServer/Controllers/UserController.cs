@@ -75,9 +75,6 @@ namespace THH.IdentityServer.Controllers
             if (!result.Succeeded)
                 return GetResult(result, "SignUp");
 
-            //if (model.Roles.IsNull() || (model.Roles.IsNotNull() && !model.Roles.Any()))
-            //    model.Roles = new List<string>() { RoleInfo.User };
-            //IdentityResult roleResult = await _userManager.AddToRolesAsync(user, model.Roles);
             var roleResult = await _userManager.AddToRoleAsync(user, RoleInfo.User);
 
             if (!roleResult.Succeeded)
@@ -98,25 +95,6 @@ namespace THH.IdentityServer.Controllers
               errors: "Gecerli bir kullanici bulunamadi"
               ).CreateResponseInstance();
 
-            //if (!user.Email.Equals(updateModel.Email))
-            //{
-            //    IdentityResult emailResponse = await _userManager.SetEmailAsync(user, updateModel.Email);
-            //    if (!emailResponse.Succeeded) return GetResult(emailResponse, "UpdateEmail");
-            //}
-
-            //if (!user.PhoneNumber.Equals(updateModel.PhoneNumber))
-            //{
-            //    IdentityResult res = await _userManager.SetPhoneNumberAsync(user, updateModel.PhoneNumber);
-            //    if (!res.Succeeded) return GetResult(res, "UpdatePhoneNumber");
-            //}
-
-            //if (!user.UserName.Equals(updateModel.UserName))
-            //{
-            //    IdentityResult res = await _userManager.SetUserNameAsync(user, updateModel.UserName);
-            //    if (!res.Succeeded) return GetResult(res, "UpdateUserName");
-            //}
-
-
 
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
@@ -129,17 +107,9 @@ namespace THH.IdentityServer.Controllers
             user.IdentityNumber = updateModel.IdentityNumber;
             user.UserName = updateModel.IdentityNumber;
             user.DateOfBirth = updateModel.DateOfBirth;
-            //user.Address = updateModel.Address;
             IdentityResult updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
                 return GetResult(updateResult, "UpdateUser");
-
-            //IList<string> userRoles = await _userManager.GetRolesAsync(user);
-            //IEnumerable<string> deleteRoles = userRoles?.Where(x => !dto.Roles.Contains(x));
-            //IEnumerable<string> addRoles = dto.Roles?.Where(x => !userRoles.Contains(x));
-            //await _userManager.RemoveFromRolesAsync(user, deleteRoles);
-            //await _userManager.AddToRolesAsync(user, addRoles);
-
             return Response<NoContent>.Success().CreateResponseInstance();
         }
         [HttpGet]
@@ -191,6 +161,26 @@ namespace THH.IdentityServer.Controllers
                  data: dto,
                  statusCode: StatusCodes.Status200OK
                   ).CreateResponseInstance();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Vote(Guid id)
+        {
+            ApplicationUser user = await _userManager.FindByIdAsync(id.ToString());
+            if (user.IsNull()) return Response<NoContent>.Fail(
+              statusCode: StatusCodes.Status400BadRequest,
+              isShow: true,
+              path: "api/role/put",
+              errors: "Gecerli bir kullanici bulunamadi"
+              ).CreateResponseInstance();
+
+            user.IVoted = true;
+
+            IdentityResult updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+                return GetResult(updateResult, "UpdateUser");
+
+            return Response<NoContent>.Success().CreateResponseInstance();
         }
 
         private IActionResult GetResult(IdentityResult result, string action = "UpdateProfile")

@@ -10,6 +10,6 @@ namespace THH.IdentityServer.Models
         public string LastName { get; set; }
         public string IdentityNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
-        //public string Address { get; set; }
+        public bool IVoted { get; set; }
     }
 }
