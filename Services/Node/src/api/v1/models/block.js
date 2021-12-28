@@ -1,8 +1,16 @@
 const SHA256 = require("crypto-js/sha256.js");
+const { VoteList } = require("./votelist");
 
 class Block {
-  constructor(votelistHash, previousHash = "") {
+  constructor(
+    index,
+    votelist = new VoteList(),
+    votelistHash,
+    previousHash = ""
+  ) {
+    this.index = index;
     this.timestamp = Date.now();
+    this.votelist = votelist;
     this.votelistHash = votelistHash;
     this.previousHash = previousHash;
     this.hash = this.calculateHash();

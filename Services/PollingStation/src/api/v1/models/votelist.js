@@ -3,15 +3,15 @@ const EC = require("elliptic");
 const ec = EC.ec("secp256k1");
 
 class VoteList {
-  constructor(pollingStationPublicKey, signature, voteList) {
+  constructor(pollingStationPublicKey, signature, votes) {
     this.pollingStationPublicKey = pollingStationPublicKey;
     this.signature = signature;
-    this.voteList = voteList;
+    this.votes = votes;
   }
 
   calculateHash() {
     let hashItem = "";
-    for (var item of this.voteList) {
+    for (var item of this.votes) {
       hashItem += SHA256(
         item.publicKey + item.candinateId + item.signature
       ).toString();
@@ -22,8 +22,8 @@ class VoteList {
   isValid() {
     if (
       this.pollingStationPublicKey === null ||
-      this.voteList === null ||
-      this.voteList === []
+      this.votes === null ||
+      this.votes === []
     )
       return false;
 

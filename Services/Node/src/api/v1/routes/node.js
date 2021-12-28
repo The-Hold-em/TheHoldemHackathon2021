@@ -9,6 +9,6 @@ router.get("/getBlockchain", NodeController.get_block_chain);
 router.get("/getLastBlock", NodeController.get_last_block);
 router.get("/getGenesisBlock", NodeController.get_genesis_block);
 router.get("/getBlock/:id", NodeController.get_block);
-router.post("/voteResults/:key", NodeController.vote_results);
+router.post("/voteResults", NodeController.vote_results);
 
 module.exports = router;

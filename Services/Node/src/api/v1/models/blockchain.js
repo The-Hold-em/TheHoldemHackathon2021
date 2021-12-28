@@ -1,9 +1,7 @@
-const SHA256 = require("crypto-js/sha256.js");
-const EC = require("elliptic");
-const ec = EC.ec("secp256k1");
-
 const { Block } = require("./block");
+const { Vote } = require("./vote");
 const { VoteList } = require("./votelist");
+const State = require("../helpers/state");
 
 class Blockchain {
   constructor() {
@@ -16,20 +14,31 @@ class Blockchain {
     return new Block([], "0");
   }
 
+  getGenesisBlock() {
+    return this.chain[0];
+  }
+
   getLatestBlock() {
     return this.chain[this.chain.length - 1];
+  }
+
+  getBlock(id) {
+    return this.chain.find((block) => block.index == id);
   }
 
   addVoteList(voteList) {
     this.voteList = new VoteList(
       voteList.pollingStationPublicKey,
       voteList.signature,
-      voteList.voteList
+      voteList.votes
     );
   }
 
   mineVoteList() {
+    console.log(this.chain.length);
     let block = new Block(
+      this.chain.length,
+      this.voteList,
       this.voteList.calculateHash(),
       this.getLatestBlock().hash
     );
@@ -37,6 +46,11 @@ class Blockchain {
 
     console.log("Block succesfully mined");
     this.chain.push(block);
+  }
+
+  getVoteResults() {
+    var counts;
+    return counts;
   }
 
   isChainVaild() {

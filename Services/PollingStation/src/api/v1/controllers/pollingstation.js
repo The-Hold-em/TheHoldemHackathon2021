@@ -8,7 +8,7 @@ exports.recevie_vote = (req, res, next) => {
   const signature = req.body.signature;
   var vote = new Vote(publicKey, candinateId, signature);
   if (vote.isValid()) {
-    State.voteList.push({
+    State.votes.push({
       publicKey: req.body.publicKey,
       candinateId: req.body.candinateId,
       signature: req.body.signature,
@@ -25,3 +25,5 @@ exports.recevie_vote = (req, res, next) => {
     });
   }
 };
+
+
