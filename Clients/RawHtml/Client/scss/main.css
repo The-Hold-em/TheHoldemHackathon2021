@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap");
 input {
-  width: 70%;
+  width: 60%;
   padding: 2%;
   border: 1px solid #707070;
   border-radius: 15px;
@@ -8,7 +8,9 @@ input {
 }
 
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=date] {
+  height: 35px;
   padding: auto 15x;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -17,12 +19,18 @@ input[type=password] {
 button {
   color: white;
   background-color: #0095F6;
-  width: 70%;
+  width: 60%;
   padding: 2%;
   border: 0;
   border-radius: 15px;
   font-weight: 700;
   font-size: 15px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+button:hover {
+  background-color: #1a81c5;
 }
 
 .image {
@@ -34,7 +42,7 @@ button {
 }
 
 nav {
-  background-color: #1eb4e9;
+  background-color: #0095F6;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,6 +150,8 @@ nav .nav .menu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 .vote-page .candidates .candidate:hover {
@@ -165,9 +175,21 @@ nav .nav .menu {
   margin: 25px 10px;
 }
 
+.vote-page .candidates .candidate .circle .rb {
+  display: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+}
+
 .vote-page .candidates .candidate.active {
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
 .vote-page .candidates .candidate.active .circle {
@@ -196,7 +218,7 @@ nav .nav .menu {
 
 .vote-page button {
   width: 20%;
-  padding: 2vh 2%;
+  padding: 1.5vh 2%;
 }
 
 .voted {
@@ -231,51 +253,19 @@ nav .nav .menu {
 }
 
 .main-menu {
-  width: 100%;
-}
-
-.main-menu .navbar {
-  width: 100%;
-  background-color: #0095F6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.main-menu .navbar .nav-title {
-  color: white;
-  font-weight: 700;
-  padding-left: 200px;
-}
-
-.main-menu .navbar .choose-title {
-  color: white;
-  font-weight: 300;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-right: 200px;
-}
-
-.main-menu .navbar .choose-title h3 {
-  margin: 0 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main-menu .choosing-menu {
@@ -298,6 +288,11 @@ nav .nav .menu {
           align-items: center;
 }
 
+.main-menu .choosing-menu .main-title {
+  font-size: 30px;
+  margin: 50px 0;
+}
+
 .main-menu .choosing-menu .line-1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -311,7 +306,6 @@ nav .nav .menu {
 
 .main-menu .choosing-menu .line-1 .type-1 {
   position: relative;
-  border: 1px solid #707070;
   border-radius: 12px;
   padding: 25px 125px;
   margin: 0 10px;
@@ -329,7 +323,6 @@ nav .nav .menu {
 
 .main-menu .choosing-menu .line-1 .type-2 {
   position: relative;
-  border: 1px solid #707070;
   border-radius: 12px;
   padding: 25px 125px;
   margin: 0 10px;
@@ -358,7 +351,6 @@ nav .nav .menu {
 
 .main-menu .choosing-menu .line-2 .type-3 {
   position: relative;
-  border: 1px solid #707070;
   border-radius: 12px;
   padding: 25px 125px;
   margin: 0 10px;
@@ -376,7 +368,6 @@ nav .nav .menu {
 
 .main-menu .choosing-menu .line-2 .type-4 {
   position: relative;
-  border: 1px solid #707070;
   border-radius: 12px;
   padding: 25px 125px;
   margin: 0 10px;
@@ -392,6 +383,7 @@ nav .nav .menu {
   padding: 20px 0;
 }
 
+<<<<<<< HEAD
 .page {
   width: 100%;
   height: 100%;
@@ -407,6 +399,22 @@ nav .nav .menu {
 }
 
 .page .container {
+=======
+.main-menu .choosing-menu .type {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.main-menu .choosing-menu .type:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  background-color: #1a81c5;
+}
+
+.container {
+>>>>>>> fa86c1ef7808723835cad744f681e56be0a93297
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
