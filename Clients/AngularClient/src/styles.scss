@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap");
+
+@import "../src/scss/color";
+@import "../src/scss/input";
+@import "../src/scss/responsive-mixins";
+@import "../src/scss/submit-button";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}

@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode
 
 ### VisualStudioCode ###
+.env
 .vscode/*
 .vscode/settings.json
 .vscode/tasks.json

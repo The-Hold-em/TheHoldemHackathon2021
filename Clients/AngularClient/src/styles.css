@@ -1,2 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap");
+:root {
+  --primary-color: #0095f6;
+  --border-color: #707070;
+  --hover-color: #1a81c5;
+}
+
+input {
+  width: 60%;
+  padding: 2%;
+  border: 1px solid #707070;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+  height: 35px;
+  padding: auto 15x;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+button {
+  color: white;
+  background-color: #0095f6;
+  width: 60%;
+  padding: 2%;
+  border: 0;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #1a81c5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
 /*# sourceMappingURL=styles.css.map */
