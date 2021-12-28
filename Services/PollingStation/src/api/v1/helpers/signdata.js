@@ -2,6 +2,7 @@ const SHA256 = require("crypto-js/sha256.js");
 const EC = require("elliptic");
 const ec = EC.ec("secp256k1");
 var State = require("../helpers/state");
+
 module.exports.sign_data = (data) => {
   const signingKey = ec.keyFromPrivate(process.env.POLLING_STATION_PRIVATE_KEY);
 
