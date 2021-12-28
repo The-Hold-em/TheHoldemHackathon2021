@@ -7,26 +7,25 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
-   
     .candidates {
         display: flex;
         flex-direction: row;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
         align-items: center;
-        margin-bottom:50px;
-    justify-content: center;
+        margin-bottom: 50px;
+        justify-content: center;
         .candidate {
-           margin: 10px;
+            margin: 10px;
             padding: 10px 20px;
             display: flex;
-            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: all .3s ease;
             &:hover {
-                box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+                box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
             }
-            
             .candidate-img {
                 background-image: url("../../img/personimg.png");
                 background-position: center;
@@ -40,10 +39,18 @@
                 border: 1px solid $border-color;
                 border-radius: 50%;
                 margin: 25px 10px;
+                .rb {
+                    display: none;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    width: 100px;
+                    height: 100px;
+                }
             }
-            &.active
-            {
+            &.active {
                 transform: translateY(-20px);
+                box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
                 .circle {
                     background-image: url("../../img/checked.png");
                     background-position: center;
@@ -52,8 +59,7 @@
                 }
             }
             .name {
-               // border: 1px solid $border-color;
-               text-transform: uppercase;
+                text-transform: uppercase;
                 padding: 0 5px;
                 h3 {
                     margin: 2px;
@@ -70,7 +76,6 @@
     }
     button {
         width: 20%;
-    padding: 2vh 2%;
-        
+        padding: 1.5vh 2%;
     }
 }

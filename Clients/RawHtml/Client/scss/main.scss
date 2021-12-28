@@ -9,13 +9,14 @@
     @import "../scss/pages/pages-scss/voting";
     @import "../scss/pages/pages-scss/voted";
     @import "../scss/pages/pages-scss/main-menu";
+    @import "../scss/pages/pages-scss/index";
     body {
         display: flex;
         width: 100%;
         margin: auto;
         padding: 0;
         font-family: "Montserrat", sans-serif;
-       
+        flex-direction: column;
         // REGISTER SCSS
         .register-image {
             background-image: url("../../img/registerimg.jpg");
@@ -23,36 +24,34 @@
         .login-image {
             background-image: url("../../img/loginimg.jpg");
         }
-         .contai
-        {
+        .contai {
             width: 70%;
             display: flex;
-            margin:auto;
-             flex-direction: row;
-             align-items:center;
-             justify-content: center;
-             border-right: 1px solid $border-color;
-          .form 
-          {
-                 width: 50%;
-                 display: flex;
-                 flex-direction: column;
-                 align-items: center;
-                 justify-content: center;
-                 h2 {
-                 padding-bottom: 5%;
-                 }
-             .logo {
-                background-image: url("../../img/logo.png");
-                height: 120px;
-                width: 120px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                 }
-                p {
-                font-size: 13px;
+            margin: auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid $border-color;
+            .form {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                h2 {
+                    padding-bottom: 5%;
                 }
-           }
+                .logo {
+                    background-image: url("../../img/logo.png");
+                    height: 120px;
+                    width: 120px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                p {
+                    font-size: 13px;
+                }
+            }
         }
     }
