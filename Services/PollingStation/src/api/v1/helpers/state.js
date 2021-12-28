@@ -1,1 +1,2 @@
 exports.voteList = [];
+exports.voteListHash = [];
