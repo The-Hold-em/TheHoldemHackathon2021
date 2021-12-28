@@ -12,9 +12,9 @@ namespace THH.IdentityServer
     {
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
-            //new ApiResource("resource_watertankcalculator"){
-            //    Scopes={"watertankcalculator_fullpermission"},
-            //    ApiSecrets=new []{ new Secret("watertankcalculator_secret".Sha256())}},
+            new ApiResource("resource_mainapi"){
+                Scopes={"mainapi_fullpermission"},
+                ApiSecrets=new []{ new Secret("mainapi_secret".Sha256())}},
             //  new ApiResource("resource_company"){
             //    Scopes={"company_fullpermission"},
             //    ApiSecrets=new []{ new Secret("company_secret".Sha256())}},
@@ -26,7 +26,7 @@ namespace THH.IdentityServer
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                //new ApiScope("watertankcalculator_fullpermission","Water Tank Calculator ICIN TUM IZINLER"),
+                new ApiScope("mainapi_fullpermission","MAIN API ICIN TUM IZINLER"),
                 //new ApiScope("company_fullpermission","Company API ICIN TUM IZINLER"),
                 //new ApiScope("gateway_fullpermission","GATEWAY ICIN TUM IZINLER"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
@@ -73,7 +73,7 @@ namespace THH.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
                         IdentityServerConstants.LocalApi.ScopeName,
-                        //"watertankcalculator_fullpermission",
+                        "mainapi_fullpermission",
                         //"company_fullpermission",
                         //"gateway_fullpermission",
                         "roles"
@@ -94,7 +94,7 @@ namespace THH.IdentityServer
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        //"watertankcalculator_fullpermission"
+                        "mainapi_fullpermission"
                     }
                 }
             };

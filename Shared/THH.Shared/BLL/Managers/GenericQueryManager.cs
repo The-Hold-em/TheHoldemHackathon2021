@@ -19,9 +19,9 @@ where T : class, IEntityBase, new()
         this._mapper = mapper;
     }
 
-    public async Task<IEnumerable<D>> GetAllAsync<D>() where D : IDTO
+    public async Task<IEnumerable<D>> GetAllAsync<D>(params string[] inculudes) where D : IDTO
     {
-        IEnumerable<T> entities = await _genericRepository.GetAllAsync();
+        IEnumerable<T> entities = (await _genericRepository.GetAllAsync(inculudes)).ToList();
         IEnumerable<D> result = _mapper.Map<IEnumerable<D>>(entities);
         return result;
     }

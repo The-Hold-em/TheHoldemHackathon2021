@@ -3,6 +3,7 @@ using THH.Shared.DAL.Interfaces;
 using THH.Core.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
+using THH.Shared.Core.StringInfo;
 
 namespace THH.Shared.DAL.Concrete.EntityFrameworkCore.Repositories;
 
@@ -22,6 +23,8 @@ public class EfGenericCommandRepository<T> : IGenericCommandRepository<T>
 
     public async Task<T> AddAsync(T entity)
     {
+        if (entity.CreatedUserId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+            entity.CreatedUserId = Guid.Parse(SystemUserInfo.SystemUserId);
         entity.CreatedTime = DateTime.Now;
         await table.AddAsync(entity);
         return entity;
@@ -30,12 +33,19 @@ public class EfGenericCommandRepository<T> : IGenericCommandRepository<T>
     public async Task AddRangeAsync(IEnumerable<T> entities)
     {
         foreach (var item in entities)
+        {
+            if (item.CreatedUserId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                item.CreatedUserId = Guid.Parse(SystemUserInfo.SystemUserId);
             item.CreatedTime = DateTime.Now;
+
+        }
         await table.AddRangeAsync(entities);
     }
 
     public async Task UpdateAsync(T entity)
     {
+        if (entity.UpdatedUserId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+            entity.UpdatedUserId = Guid.Parse(SystemUserInfo.SystemUserId);
         entity.UpdatedTime = DateTime.Now;
         await Task.FromResult(table.Update(entity));
     }
