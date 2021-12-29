@@ -20,14 +20,6 @@ app.use(Cors.cors);
 app.use("/pollingstation", pollingStationRoutes);
 
 //---
-const Timer = require("setinterval");
-
-const t = new Timer(async () => {
-  sendVoteList.SendVoteList();
-}, 10000);
-
-// start timer
-t.setInterval();
 
 app.use(InternalServerError.internal_server_err);
 app.use(NotFound.not_found);

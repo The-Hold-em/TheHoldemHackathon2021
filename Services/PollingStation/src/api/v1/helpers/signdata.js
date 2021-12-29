@@ -17,8 +17,8 @@ module.exports.sign_data = (data) => {
 
 module.exports.sign_vote_list = () => {
   const signingKey = ec.keyFromPrivate(process.env.POLLING_STATION_PRIVATE_KEY);
-
-  if (signingKey.getPublic("hex") !== process.env.POLLING_STATION_PUBLIC_KEY) {
+  const publicKey = process.env.POLLING_STATION_PUBLIC_KEY;
+  if (signingKey.getPublic("hex") !== publicKey) {
     throw new Error("You cannot sign this vote list!");
   }
   let hashItem = "";
