@@ -1,0 +1,138 @@
+:root {
+  --primary-color: #0095f6;
+  --border-color: #707070;
+  --hover-color: #1a81c5;
+}
+
+.vote-page {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 90vh;
+}
+
+.vote-page .candidates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vote-page .candidates .candidate {
+  margin: 10px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.vote-page .candidates .candidate:hover {
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+}
+
+.vote-page .candidates .candidate .candidate-img {
+  background-image: url("../../../../assets/img/personimg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100px;
+  width: 120px;
+}
+
+.vote-page .candidates .candidate .circle {
+  padding: 30px;
+  border: 1px solid #707070;
+  border-radius: 50%;
+  margin: 25px 10px;
+}
+
+.vote-page .candidates .candidate .circle .rb {
+  display: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+}
+
+.vote-page .candidates .candidate .circle input[type="radio"]:checked {
+  background-image: url("../../../../assets/img/checked.png");
+}
+
+.vote-page .candidates .candidate.active {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+}
+
+.vote-page .candidates .candidate.active .circle {
+  background-image: url("../../../../assets/img/checked.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vote-page .candidates .candidate .name {
+  text-transform: uppercase;
+  padding: 0 5px;
+}
+
+.vote-page .candidates .candidate .name h3 {
+  margin: 2px;
+  font-size: 10px;
+}
+
+.vote-page .candidates .circle:hover {
+  background-image: url("../../../../assets/img/checked.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vote-page button {
+  width: 20%;
+  padding: 1.5vh 2%;
+}
+/*# sourceMappingURL=vote.component.css.map */
