@@ -10,7 +10,7 @@ input {
   width: 60%;
   padding: 2%;
   border: 1px solid #707070;
-  border-radius: 15px;
+  border-radius: 12px;
   margin-bottom: 25px;
 }
 
@@ -46,5 +46,25 @@ button:hover {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+}
+
+.logo {
+  background-image: url("../src/assets/img/logo.png");
+}
+
+.register-image {
+  background-image: url("../src/assets/img/registerimg.jpg");
+}
+
+.login-image {
+  background-image: url("../src/assets/img/loginimg.jpg");
+}
+
+.image {
+  height: 100vh;
+  width: 874px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /*# sourceMappingURL=styles.css.map */
