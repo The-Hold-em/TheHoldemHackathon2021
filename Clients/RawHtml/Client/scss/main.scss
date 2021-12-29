@@ -59,3 +59,22 @@
             }
         }
     }
+    
+    @media only screen and (max-width: 1360px) {
+        .register-image {
+            display: none;
+        }
+        .login-image {
+            display: none;
+        }
+        .form {
+            margin: auto;
+            padding: 0%;
+            width: 100%;
+            height: auto;
+            margin: 20% 0;
+        }
+        .contai {
+            border-right: none !important;
+        }
+    }

@@ -70,6 +70,9 @@ nav .nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav .nav h2 {
@@ -220,6 +223,12 @@ nav .nav .menu {
 .vote-page button {
   width: 20%;
   padding: 1.5vh 2%;
+}
+
+@media only screen and (max-width: 674px) {
+  .candidate-img {
+    display: none;
+  }
 }
 
 .voted {
@@ -578,7 +587,7 @@ nav .nav .menu {
   background-color: white;
   border-radius: 10px;
   width: 70%;
-  height: 25%;
+  height: auto;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
   margin: 20px auto;
@@ -602,6 +611,7 @@ nav .nav .menu {
 }
 
 .page .teamscontainer .content p {
+  height: auto;
   margin: auto;
 }
 
@@ -719,5 +729,24 @@ body .contai .form .logo {
 
 body .contai .form p {
   font-size: 13px;
+}
+
+@media only screen and (max-width: 1360px) {
+  .register-image {
+    display: none;
+  }
+  .login-image {
+    display: none;
+  }
+  .form {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    margin: 20% 0;
+  }
+  .contai {
+    border-right: none !important;
+  }
 }
 /*# sourceMappingURL=main.css.map */
