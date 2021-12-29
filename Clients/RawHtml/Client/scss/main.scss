@@ -10,6 +10,10 @@
     @import "../scss/pages/pages-scss/voted";
     @import "../scss/pages/pages-scss/main-menu";
     @import "../scss/pages/pages-scss/index";
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
         display: flex;
         width: 100%;
