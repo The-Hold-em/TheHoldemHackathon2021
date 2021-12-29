@@ -1,49 +1,18 @@
-<script src="./voting.js"></script>
 <div class="vote-page">
   <div class="candidates">
-    <div class="candidate candidate-1">
+    <div *ngFor="let item of candidates" class="candidate">
       <div class="candidate-img"></div>
-      <div class="circle">
-        <input class="rb rb-1" type="radio" name="fav-language" id="1" />
+      <div #radio class="circle" (click)="sendVote(radioInput.id)">
+        <input
+          #radioInput
+          class="rb"
+          type="radio"
+          name="fav-language"
+          id="{{ item.id }}"
+        />
       </div>
       <div class="name">
-        <h3>Recep Şen</h3>
-      </div>
-    </div>
-    <div class="candidate candidate-2">
-      <div class="candidate-img"></div>
-      <div class="circle">
-        <input class="rb rb-2" type="radio" name="fav-language" id="2" />
-      </div>
-      <div class="name">
-        <h3>İrfan Soydan</h3>
-      </div>
-    </div>
-    <div class="candidate candidate-3">
-      <div class="candidate-img"></div>
-      <div class="circle">
-        <input class="rb rb-3" type="radio" name="fav-language" id="3" />
-      </div>
-      <div class="name">
-        <h3>Ömer Özoğlu</h3>
-      </div>
-    </div>
-    <div class="candidate candidate-4">
-      <div class="candidate-img"></div>
-      <div class="circle">
-        <input class="rb rb-4" type="radio" name="fav-language" id="4" />
-      </div>
-      <div class="name">
-        <h3>Hikmet Gezmen</h3>
-      </div>
-    </div>
-    <div class="candidate candidate-5">
-      <div class="candidate-img"></div>
-      <div class="circle">
-        <input class="rb rb-5" type="radio" name="fav-language" id="5" />
-      </div>
-      <div class="name">
-        <h3>Donald Trump</h3>
+        <h3>{{ item.name }}</h3>
       </div>
     </div>
   </div>
