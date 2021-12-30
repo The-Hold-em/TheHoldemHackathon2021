@@ -10,8 +10,8 @@ using THH.IdentityServer.Data;
 namespace THH.IdentityServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211227125047_identityNumber")]
-    partial class identityNumber
+    [Migration("20211229113604_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -178,6 +178,9 @@ namespace THH.IdentityServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
+
+                    b.Property<bool>("IVoted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("IdentityNumber")
                         .IsRequired()

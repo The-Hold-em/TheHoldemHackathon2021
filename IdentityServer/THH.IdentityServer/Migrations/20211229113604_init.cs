@@ -43,7 +43,8 @@ namespace THH.IdentityServer.Migrations
                     FirstName = table.Column<string>(maxLength: 40, nullable: false),
                     LastName = table.Column<string>(maxLength: 40, nullable: false),
                     IdentityNumber = table.Column<string>(maxLength: 11, nullable: false),
-                    DateOfBirth = table.Column<DateTime>(nullable: false)
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    IVoted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -182,6 +183,12 @@ namespace THH.IdentityServer.Migrations
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_IdentityNumber",
+                table: "AspNetUsers",
+                column: "IdentityNumber",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

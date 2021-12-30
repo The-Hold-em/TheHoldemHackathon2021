@@ -18,4 +18,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<Election> Elections { get; set; }
     public DbSet<City> Cities { get; set; }
     public DbSet<District> Districts { get; set; }
+    public DbSet<Candidate> Candidates { get; set; }
 }
