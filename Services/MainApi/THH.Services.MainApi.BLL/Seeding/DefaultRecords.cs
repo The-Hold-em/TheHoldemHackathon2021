@@ -20,9 +20,38 @@ public class DefaultRecords
 
     public List<City> GetCities() => _citySetting.Cities.Select(c => new City()
     {
-        CreatedUserId= _systemUserId,
+        CreatedUserId = _systemUserId,
         Name = c.Name,
         Plate = c.Plate,
-        Districts = c.Districts.Select(x => new District() { Name = x, CreatedUserId=_systemUserId,CreatedTime=DateTime.Now}).ToList()
+        Districts = c.Districts.Select(x => new District() { Name = x, CreatedUserId = _systemUserId, CreatedTime = DateTime.Now }).ToList()
     }).ToList();
+
+    public List<Candidate> GetCandidates() => new()
+        {
+             new ()
+            {
+                Name = "Ömer",
+                Party = "Mars",
+            },
+             new ()
+            {
+                Name = "Hikmet",
+                Party = "Venüs",
+            },
+             new ()
+            {
+                Name = "Recep",
+                Party = "Jupiter",
+            },
+             new ()
+            {
+                Name = "İrfan",
+                Party = "Satürn",
+            },
+             new ()
+            {
+                Name = "Yusuf",
+                Party = "Merkür",
+            }
+         };
 }

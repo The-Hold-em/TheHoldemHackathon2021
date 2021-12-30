@@ -19,6 +19,7 @@ namespace THH.IdentityServer.Mapping
             builder.Property(x => x.IdentityNumber).HasMaxLength(11).IsRequired(true);
             builder.HasIndex(x => x.IdentityNumber).IsUnique();
             builder.Property(x => x.DateOfBirth).IsRequired(true);
+            builder.Property(x => x.IVoted).IsRequired(true);
             //builder.Property(x => x.Address).HasMaxLength(200).IsRequired(false);
         }
     }

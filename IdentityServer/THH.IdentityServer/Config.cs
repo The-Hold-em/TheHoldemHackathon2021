@@ -15,20 +15,12 @@ namespace THH.IdentityServer
             new ApiResource("resource_mainapi"){
                 Scopes={"mainapi_fullpermission"},
                 ApiSecrets=new []{ new Secret("mainapi_secret".Sha256())}},
-            //  new ApiResource("resource_company"){
-            //    Scopes={"company_fullpermission"},
-            //    ApiSecrets=new []{ new Secret("company_secret".Sha256())}},
-            //new ApiResource("resource_gateway"){
-            //    Scopes={"gateway_fullpermission"},
-            //    ApiSecrets=new []{ new Secret("gateway_secret".Sha256())}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
                 new ApiScope("mainapi_fullpermission","MAIN API ICIN TUM IZINLER"),
-                //new ApiScope("company_fullpermission","Company API ICIN TUM IZINLER"),
-                //new ApiScope("gateway_fullpermission","GATEWAY ICIN TUM IZINLER"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
         public static IEnumerable<IdentityResource> IdentityResources =>
@@ -52,7 +44,6 @@ namespace THH.IdentityServer
                     AllowedScopes =
                     {
                         IdentityServerConstants.LocalApi.ScopeName,
-                        //"gateway_fullpermission"
                     },
                      AccessTokenLifetime =(int)TimeSpan.FromDays(20).TotalSeconds
                 },
@@ -74,8 +65,6 @@ namespace THH.IdentityServer
                         IdentityServerConstants.StandardScopes.OfflineAccess,
                         IdentityServerConstants.LocalApi.ScopeName,
                         "mainapi_fullpermission",
-                        //"company_fullpermission",
-                        //"gateway_fullpermission",
                         "roles"
                     },
                     AccessTokenLifetime =(int)TimeSpan.FromDays(5).TotalSeconds,
@@ -90,7 +79,6 @@ namespace THH.IdentityServer
 
                     AllowedGrantTypes = new []{"urn:ietf:params:oauth:grant-type:token-exchange"},
                     ClientSecrets = { new Secret("webclient_client_secret".Sha256()) },
-                    //todo api dan api a istek yaparken ikinci api tarafinin izilerinin bildirilmesi gerek
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
