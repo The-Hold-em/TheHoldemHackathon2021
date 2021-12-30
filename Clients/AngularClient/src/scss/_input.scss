@@ -1,0 +1,15 @@
+input {
+  width: 60%;
+  padding: 2%;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+  height: 35px;
+  padding: auto 15x;
+  box-sizing: border-box;
+}

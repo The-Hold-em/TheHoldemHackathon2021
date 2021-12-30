@@ -79,3 +79,9 @@
         padding: 1.5vh 2%;
     }
 }
+
+@media only screen and (max-width: 674px) {
+    .candidate-img {
+        display: none;
+    }
+}

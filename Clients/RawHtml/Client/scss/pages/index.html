@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main.css">
+    <script src="../../../jquery-3.6.0.min.js"></script>
     <script src="../js/javascript.js"></script>
-    <title>The Hold'em Voting</title>
+    <title>The Hold'em</title>
 </head>
 
 <body>
@@ -16,10 +17,10 @@
 
             <h2><a href="">TheHoldem</a></h2>
             <div class="menu">
-                <a href="">
+                <a href="../pages/register.html">
                     <h4>Oturum aç</h4>
                 </a>
-                <a href="">
+                <a href="../pages/login.html">
                     <h4>Kaydol</h4>
                 </a>
             </div>
@@ -27,38 +28,39 @@
     </nav>
     <div class="page">
         <div class="container">
-            <div class="textt">
-                <h1>Oy kullanmanın dünyadaki en güvenli yolu.</h1>
-                <h4>Kimliğinizi doğrulayarak oy kullanabileceğiniz yeni bir dönem başlıyor.</h4>
-            </div>
+            <div class="text-button">
 
-            <div class="buttons">
-                <button>Başla</button>
-                <button>Giriş yap</button>
-            </div>
 
+                <div class="text">
+                    <h1>Oy kullanmanın dünyadaki en güvenli yolu.</h1>
+                    <h4>Kimliğinizi doğrulayarak oy kullanabileceğiniz yeni bir dönem başlıyor.</h4>
+                </div>
+
+                <div class="buttons">
+                    <button onclick="window.open('../pages/register.html')">Başla</button>
+                    <button onclick="window.open('../pages/login.html')">Giriş Yap</button>
+                </div>
+
+            </div>
+            <div class="arrows">
+                <a href="#teams">
+                    <span class="span-1"></span>
+                    <span class="span-2"></span>
+                    <span class="span-3"></span>
+                </a>
+            </div>
         </div>
 
+        <div class="transitions">
+            <h1>Takım Üyeleri</h1>
+        </div>
 
         <div class="teamscontainer">
-            <div class="content">
+            <div class="content " id="teams">
                 <div class="content-img content-img-1">
-
-                    <ul class="team-social-list">
-                        <li>
-                            <a href="#"><i class="fab fa-github-alt"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-
-                        </li>
-                    </ul>
                 </div>
                 <div class="about">
-                    <h3>Recep Şen</h3>
+                    <h1>Recep Şen</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consequat, nunc nec elementum suscipit, purus augue fermentum augue, sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id leo vitae, fermentum volutpat est.
                         In ligula neque, tempus ac quam.</p>
                 </div>
@@ -67,7 +69,7 @@
 
             <div class="content">
                 <div class="about">
-                    <h3>Ömer Özoğlu</h3>
+                    <h1>Ömer Özoğlu</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consequat, nunc nec elementum suscipit, purus augue fermentum augue, sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id leo vitae, fermentum volutpat est.
                         In ligula neque, tempus ac quam.</p>
                 </div>
@@ -79,7 +81,7 @@
             <div class="content">
                 <div class="content-img content-img-3"></div>
                 <div class="about">
-                    <h3>Hikmet Gezmen</h3>
+                    <h1>Hikmet Gezmen</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consequat, nunc nec elementum suscipit, purus augue fermentum augue, sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id leo vitae, fermentum volutpat est.
                         In ligula neque, tempus ac quam.</p>
                 </div>
@@ -89,7 +91,7 @@
 
             <div class=" content ">
                 <div class="about ">
-                    <h3>İrfan Yunus Soydan</h3>
+                    <h1>İrfan Yunus Soydan</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consequat, nunc nec elementum suscipit, purus augue fermentum augue, sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id leo vitae, fermentum volutpat est.
                         In ligula neque, tempus ac quam.</p>
                 </div>

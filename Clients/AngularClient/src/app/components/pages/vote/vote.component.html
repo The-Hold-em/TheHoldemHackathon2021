@@ -1,0 +1,21 @@
+<div class="vote-page">
+  <div class="candidates">
+    <div *ngFor="let item of candidates" class="candidate">
+      <div class="candidate-img"></div>
+      <div #radio class="circle" (click)="sendVote(radioInput.id)">
+        <input
+          #radioInput
+          class="rb"
+          type="radio"
+          name="fav-language"
+          id="{{ item.id }}"
+        />
+      </div>
+      <div class="name">
+        <h3>{{ item.name }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <button>Oy Kullan</button>
+</div>

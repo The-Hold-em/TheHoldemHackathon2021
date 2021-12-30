@@ -10,6 +10,10 @@
     @import "../scss/pages/pages-scss/voted";
     @import "../scss/pages/pages-scss/main-menu";
     @import "../scss/pages/pages-scss/index";
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
         display: flex;
         width: 100%;
@@ -53,5 +57,24 @@
                     font-size: 13px;
                 }
             }
+        }
+    }
+    
+    @media only screen and (max-width: 1360px) {
+        .register-image {
+            display: none;
+        }
+        .login-image {
+            display: none;
+        }
+        .form {
+            margin: auto;
+            padding: 0%;
+            width: 100%;
+            height: auto;
+            margin: 20% 0;
+        }
+        .contai {
+            border-right: none !important;
         }
     }
