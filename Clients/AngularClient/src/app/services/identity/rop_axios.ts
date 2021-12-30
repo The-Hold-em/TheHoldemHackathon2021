@@ -1,15 +1,14 @@
 import axios from "axios";
 import identityServerRequest from "./identity.service";
 import CenteralRequest from "./centeralRequest";
-import store from "./store.js";
-import clientInfo from "./clientInfo";
+import store from "./store";
 const requester = new identityServerRequest();
 const axiosApiInstance = axios.create();
 
 axiosApiInstance.interceptors.request.use(
   async (config) => {
     const token = store.get("token");
-    config.baseURL = `http://${clientInfo.BaseUrl}/services`;
+    config.baseURL = `http://localhost:8264/`;
     config.headers = {
       "Authorization": `Bearer ${token.access_token}`,
       "Accept": "application/json",
@@ -43,3 +42,5 @@ axiosApiInstance.interceptors.response.use(
     return CenteralRequest.errorResponse(error);
   }
 );
+
+export default axiosApiInstance;

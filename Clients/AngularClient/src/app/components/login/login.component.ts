@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import IdentityService from 'src/app/services/identity/identity.service';
 const identityService = new IdentityService();
 
@@ -9,7 +10,7 @@ const identityService = new IdentityService();
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,10 @@ export class LoginComponent implements OnInit {
     }
     var result = await identityService.signInAsync(data);
     await identityService.getUserInfoAsync();
+    if (result.isSuccessful) {
+      this.router.navigate(['elections']);
+    }
     console.log(result);
+
   }
 }
