@@ -164,9 +164,18 @@ namespace THH.IdentityServer.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Vote(Guid id)
+        public async Task<IActionResult> Vote()
         {
-            ApplicationUser user = await _userManager.FindByIdAsync(id.ToString());
+            Claim userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
+
+            if (userClaim.IsNull()) return Response<NoContent>.Fail(
+                 statusCode: StatusCodes.Status400BadRequest,
+                 isShow: true,
+                 path: "api/User/Vote",
+                 errors: "Kullanici girisi dogrulanamadi"
+                 ).CreateResponseInstance();
+
+            ApplicationUser user = await _userManager.FindByIdAsync(userClaim.Value);
             if (user.IsNull()) return Response<NoContent>.Fail(
               statusCode: StatusCodes.Status400BadRequest,
               isShow: true,
@@ -181,6 +190,30 @@ namespace THH.IdentityServer.Controllers
                 return GetResult(updateResult, "UpdateUser");
 
             return Response<NoContent>.Success().CreateResponseInstance();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> IsVote()
+        {
+            Claim userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
+
+            if (userClaim.IsNull()) return Response<NoContent>.Fail(
+                 statusCode: StatusCodes.Status400BadRequest,
+                 isShow: true,
+                 path: "api/User/Vote",
+                 errors: "Kullanici girisi dogrulanamadi"
+                 ).CreateResponseInstance();
+
+            ApplicationUser user = await _userManager.FindByIdAsync(userClaim.Value);
+            if (user.IsNull()) return Response<NoContent>.Fail(
+             statusCode: StatusCodes.Status400BadRequest,
+             isShow: true,
+             path: "api/role/put",
+             errors: "Gecerli bir kullanici bulunamadi"
+             ).CreateResponseInstance();
+
+            return Response<bool>.Success(user.IVoted).CreateResponseInstance();
+
         }
 
         private IActionResult GetResult(IdentityResult result, string action = "UpdateProfile")
