@@ -19,9 +19,6 @@ export class Vote {
 
   sign(privateKey: string) {
     const signingKey = ec.keyFromPrivate(privateKey);
-    console.log("private key" + privateKey);
-    console.log("public key my " + this.publicKey);
-    console.log("public key metod " + signingKey.getPublic("hex"));
     if (signingKey.getPublic("hex") !== this.publicKey) {
       throw new Error("You cannot sign this vote!");
     }
