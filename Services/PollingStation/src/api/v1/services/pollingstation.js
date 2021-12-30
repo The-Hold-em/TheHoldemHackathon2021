@@ -3,21 +3,23 @@ const SignVoteList = require("../helpers/signdata");
 const State = require("../helpers/state");
 
 exports.SendVoteList = () => {
-  const data = State.votes;
+  var data = State.votes;
   const sign = SignVoteList.sign_vote_list();
   const publicKey = process.env.POLLING_STATION_PUBLIC_KEY;
-
-  axios
-    .post("http://localhost:3000/pollingstation/sendVoteListToNode", {
-      pollingStationPublicKey: publicKey,
-      signature: sign,
-      votes: data,
-    })
-    .then((res) => {
-      console.log(`statusCode: ${res.status}`);
-      console.log(res);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  State.votes = [];
+  State.voteListHash = [];
+  if (data && data !== null && data.length > 0) {
+    axios
+      .post("http://localhost:5000/node/receiveVoteList", {
+        pollingStationPublicKey: publicKey,
+        signature: sign,
+        votes: data,
+      })
+      .then((res) => {
+        console.log(`This vote list was successfully sended: ${res.status}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 };

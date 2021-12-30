@@ -13,13 +13,19 @@ class Vote {
   }
 
   isValid() {
-    if (this.publicKey === null || this.candinateId === null) return false;
+    if (this.publicKey === null || this.candinateId === null) {
+      return false;
+    }
 
     if (!this.signature || this.signature.length === 0) {
+      console.log(
+        "*********************************************************************"
+      );
       throw new Error("No signature in this vote");
     }
     var calculateHash = this.calculateHash();
     const publicKey = ec.keyFromPublic(this.publicKey, "hex");
+
     return publicKey.verify(calculateHash, this.signature);
   }
 }

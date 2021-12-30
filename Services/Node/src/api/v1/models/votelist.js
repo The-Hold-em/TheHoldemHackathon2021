@@ -25,8 +25,9 @@ class VoteList {
       this.pollingStationPublicKey === null ||
       this.votes === null ||
       this.votes === []
-    )
+    ) {
       return false;
+    }
 
     if (!this.signature || this.signature.length === 0) {
       throw new Error("No signature in this vote list");
@@ -34,6 +35,7 @@ class VoteList {
 
     var calculateHash = this.calculateHash();
     const publicKey = ec.keyFromPublic(this.pollingStationPublicKey, "hex");
+    console.log(calculateHash, this.signature);
     return publicKey.verify(calculateHash, this.signature);
   }
 }

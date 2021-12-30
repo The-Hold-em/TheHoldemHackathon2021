@@ -1,11 +1,7 @@
-import { Injectable } from '@angular/core';
 import * as EC from "elliptic";
 const ec = new EC.ec("secp256k1");
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CryptographyService {
+export class Cryptography {
   key: any;
   publicKey: string = "";
   privateKey: string = "";
@@ -20,5 +16,4 @@ export class CryptographyService {
   getPrivateKey() {
     return this.key.getPrivate("hex");
   }
-
 }

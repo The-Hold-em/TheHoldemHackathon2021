@@ -1,7 +1,6 @@
 const SHA256 = require("crypto-js/sha256.js");
 var State = require("../helpers/state");
 const { Vote } = require("../models/vote");
-const { SendVoteList } = require("../services/pollingstation");
 const { ElectionTimer } = require("../services/timer");
 
 exports.recevie_vote = (req, res, next) => {

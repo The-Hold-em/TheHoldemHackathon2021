@@ -2,12 +2,12 @@
   <div class="candidates">
     <div *ngFor="let item of candidates" class="candidate">
       <div class="candidate-img"></div>
-      <div #radio class="circle" (click)="sendVote(radioInput.id)">
+      <div #circile class="circle" (click)="setCandidateId(radioInput.id)">
         <input
           #radioInput
           class="rb"
           type="radio"
-          name="fav-language"
+          name="candidate"
           id="{{ item.id }}"
         />
       </div>
@@ -17,5 +17,5 @@
     </div>
   </div>
 
-  <button>Oy Kullan</button>
+  <button (click)="sendVote()">Oy Kullan</button>
 </div>

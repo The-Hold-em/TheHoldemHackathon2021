@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cryptography } from 'src/app/models/cryptography';
 import { Vote } from 'src/app/models/vote.model';
-import { CryptographyService } from 'src/app/services/cryptography/cryptography.service';
 import { PollingstationService } from 'src/app/services/pollingstation/pollingstation.service';
 declare let $: any;
 @Component({
@@ -10,7 +10,6 @@ declare let $: any;
 })
 export class VoteComponent implements OnInit {
 
-  radioinput: any;
   candidates = [{
     id: "d57f351504f645b381bd9b620c134808",
     name: "Recep"
@@ -29,33 +28,38 @@ export class VoteComponent implements OnInit {
   }
   ]
 
-
+  radioinput: any;
   publicKey: string = "";
   privateKey: string = "";
-  // vote: Vote = new Vote();
-  constructor(private pollingStationService: PollingstationService, private cryptographyService: CryptographyService) { }
+  candidateId: any;
+  constructor(private pollingStationService: PollingstationService) { }
 
   ngOnInit(): void {
   }
 
-  test() {
-    this.pollingStationService.sendVote({
-      "publicKey": "04bcb77784b5db325a9774ddcc446dbcf82730b823bfd7d2253dac08f1e83cec23f43a0402fbace05705c56642ba3e9150b92550859f62d76ea0b1927d035fded1",
-      "candinateId": "1.Aday",
-      "signature": "304402203eec4043c31871bd1f3190d50784e5fe26b9ea4a563a965c795025f3be4dd00c022076a71d395dcda8ba5bf4b75ccf1f1f2a02d2d869b8e91935aeb55cc0fad01409"
-    }).subscribe();
+  setCandidateId(candinateId: any) {
+    this.candidateId = candinateId;
   }
-
-  sendVote(candinateId: any) {
+  async sendVote() {
     this.generateKeyPair();
-    var vote = new Vote(this.publicKey, this.privateKey, candinateId);
-    console.log(vote);
-    this.pollingStationService.sendVote(vote).subscribe();
+    var vote = await new Vote(this.publicKey, this.privateKey, this.candidateId);
+
+    await this.pollingStationService.sendVote(
+      {
+        publicKey: vote.publicKey,
+        candinateId: vote.candinateId,
+        signature: vote.signature
+      }
+    ).subscribe();
   }
 
   generateKeyPair() {
-    this.publicKey = this.cryptographyService.publicKey;
-    this.privateKey = this.cryptographyService.privateKey;
+    var cryptography = new Cryptography();
+
+    this.publicKey = cryptography.publicKey;
+    console.log("publicKey:" + this.publicKey);
+    this.privateKey = cryptography.privateKey;
+    console.log("privateKey:" + this.privateKey);
   }
 
   ngAfterViewInit() {
