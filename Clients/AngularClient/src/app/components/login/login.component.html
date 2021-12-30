@@ -3,9 +3,15 @@
   <div class="form">
     <div class="logo"></div>
     <h2>Giriş Yap</h2>
-    <input type="text" name="" id="" placeholder="TC Kimlik Numarası" />
-    <input type="password" name="" id="" placeholder="Şifre" />
-    <button>Giriş Yap</button>
+    <input
+      #idnumber
+      type="text"
+      name=""
+      id=""
+      placeholder="TC Kimlik Numarası"
+    />
+    <input #pass type="password" name="" id="" placeholder="Şifre" />
+    <button (click)="login(idnumber.value, pass.value)">Giriş Yap</button>
     <p>Hesabın yok mu?<a routerLink="/register" href="/register">Kaydol</a></p>
   </div>
 </div>

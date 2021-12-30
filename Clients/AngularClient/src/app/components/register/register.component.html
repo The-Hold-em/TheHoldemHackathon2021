@@ -3,13 +3,32 @@
   <div class="form">
     <div class="logo"></div>
     <h2>Kayıt Ol</h2>
-    <input type="text" name="" id="" placeholder="Ad" />
-    <input type="text" name="" id="" placeholder="Soyad" />
-    <input type="text" name="" id="" placeholder="TC Kimlik Numarası" />
-    <input type="password" name="" id="" placeholder="Şifre" />
-    <input type="password" name="" id="" placeholder="Şifre(Tekrar)" />
-    <input type="date" name="" id="" placeholder="Doğum Tarihi" />
-    <button>Giriş Yap</button>
+    <input #name type="text" name="" id="" placeholder="Ad" />
+    <input #lastname type="text" name="" id="" placeholder="Soyad" />
+    <input
+      #idnumber
+      type="text"
+      name=""
+      id=""
+      placeholder="TC Kimlik Numarası"
+    />
+    <input #pass1 type="password" name="" id="" placeholder="Şifre" />
+    <input #pass2 type="password" name="" id="" placeholder="Şifre(Tekrar)" />
+    <input #birthdate type="date" name="" id="" placeholder="Doğum Tarihi" />
+    <button
+      (click)="
+        register(
+          name.value,
+          lastname.value,
+          idnumber.value,
+          pass1.value,
+          pass2.value,
+          birthdate.value
+        )
+      "
+    >
+      Kayıt Ol
+    </button>
     <p>Hesabın var mı?<a routerLink="/login" href="/login">Giriş Yap</a></p>
   </div>
 </div>
