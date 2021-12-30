@@ -46,7 +46,6 @@ export class PollingstationService {
       "period": 30000
     });
   }
-
   // Handle Errors
   error(error: HttpErrorResponse) {
     let errorMessage = '';

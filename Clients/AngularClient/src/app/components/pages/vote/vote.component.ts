@@ -33,6 +33,8 @@ export class VoteComponent implements OnInit {
   async sendVote() {
     this.generateKeyPair();
     var vote = await new Vote(this.publicKey, this.privateKey, this.candidateId);
+    console.log(vote);
+
     await this.pollingStationService.sendVote(
       {
         publicKey: vote.publicKey,
@@ -55,21 +57,25 @@ export class VoteComponent implements OnInit {
     var candidateService = new CandidateService();
     var result = await candidateService.getCandidate();
     this.candidates = result.data;
+    console.log(this.candidates);
+
   }
   ngAfterViewInit() {
     $(document).ready(() => {
-      $('input[type="radio"]').on("change", function (e: any) {
-        var candidate = $(e.target).parents(".candidate")[0];
-        $(".candidate").removeClass("active");
-        $(candidate).addClass("active");
-      });
-      $(".circle").on("click", function (e: any) {
-        var radio = $(e.target).find('input[type="radio"]');
-        console.log();
+      setTimeout(() => {
+        $('input[type="radio"]').on("change", function (e: any) {
+          var candidate = $(e.target).parents(".candidate")[0];
+          $(".candidate").removeClass("active");
+          $(candidate).addClass("active");
+        });
+        $(".circle").on("click", function (e: any) {
+          var radio = $(e.target).find('input[type="radio"]');
+          console.log(radio);
+          radio.checked = true;
+          $(radio).trigger("change");
+        });
+      }, 100);
 
-        radio.checked = true;
-        $(radio).trigger("change");
-      });
     });
 
   }
