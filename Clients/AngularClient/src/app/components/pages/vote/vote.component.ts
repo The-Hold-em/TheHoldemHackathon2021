@@ -12,7 +12,10 @@ declare let $: any;
 })
 export class VoteComponent implements OnInit {
 
-  candidates = []
+  candidates = [{
+    id: "",
+    name: ""
+  }]
 
   radioinput: any;
   publicKey: string = "";
@@ -52,7 +55,6 @@ export class VoteComponent implements OnInit {
     var candidateService = new CandidateService();
     var result = await candidateService.getCandidate();
     this.candidates = result.data;
-
   }
   ngAfterViewInit() {
     $(document).ready(() => {

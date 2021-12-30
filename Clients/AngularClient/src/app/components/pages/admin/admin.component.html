@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>{{ statusText }}</h1>
+  <button *ngIf="!isStart" (click)="startElection()">Başlat</button>
+  <button *ngIf="isStart" (click)="stopElection()">Durdur</button>
+  <button (click)="getResult()">Sonuçları görüntüle</button>
+  <h1 *ngIf="isResult">Sonuçlar</h1>
+</div>

@@ -6,13 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { VoteComponent } from './vote/vote.component';
 import { FormsModule } from '@angular/forms';
 import { ElectionsComponent } from './elections/elections.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     VoteComponent,
-    ElectionsComponent
+    ElectionsComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

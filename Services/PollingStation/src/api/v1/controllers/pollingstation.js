@@ -32,15 +32,23 @@ exports.start_polling_station = (req, res, next) => {
   const period = req.body.period;
 
   if (state === 1) {
+    State.serverStatus = true;
     State.electionTimer = new ElectionTimer(state, period);
     State.electionTimer.startElection();
     return res.status(200).json({
       Message: "election started",
     });
   } else if (state === 0) {
+    State.serverStatus = false;
     State.electionTimer.timer.clearInterval();
     return res.status(200).json({
       Message: "Election stopped",
     });
   }
+};
+
+exports.get_server_status = (req, res, next) => {
+  return res.status(200).json({
+    Status: State.serverStatus,
+  });
 };

@@ -6,6 +6,7 @@ const PollingStationControllerTest = require("../controllers/tests/pollingstatio
 
 router.post("/recevieVote", PollingStationController.recevie_vote);
 router.post("/startElection", PollingStationController.start_polling_station);
+router.get("/getServerStatus", PollingStationController.get_server_status);
 
 router.post(
   "/sendVoteListToNode",
