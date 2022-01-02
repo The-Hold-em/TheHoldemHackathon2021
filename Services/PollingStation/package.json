@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "omerozoglu",
@@ -20,7 +20,9 @@
     "dotenv": "^10.0.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.2",
+    "mongodb": "^4.2.2",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
     "setinterval": "^0.2.4"
   }
 }

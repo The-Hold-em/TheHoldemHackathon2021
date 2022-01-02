@@ -4,11 +4,11 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
-const pollingStationRoutes = require("./api/v1/routes/pollingstation");
-const sendVoteList = require("./api/v1/services/pollingstation");
-const Cors = require("./api/v1/middlewares/cors");
-const InternalServerError = require("./api/v1/middlewares/500");
-const NotFound = require("./api/v1/middlewares/404");
+const pollingStationRoutes = require("./routes/pollingstation");
+const sendVoteList = require("./services/pollingstation");
+const Cors = require("./middlewares/cors");
+const InternalServerError = require("./middlewares/500");
+const NotFound = require("./middlewares/404");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
