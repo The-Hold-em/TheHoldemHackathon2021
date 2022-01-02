@@ -5,6 +5,7 @@ import { AdminComponent } from './components/pages/admin/admin.component';
 import { ElectionsComponent } from './components/pages/elections/elections.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { VoteComponent } from './components/pages/vote/vote.component';
+import { VotedComponent } from './components/pages/voted/voted.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'vote', component: VoteComponent },
   { path: 'elections', component: ElectionsComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'voted', component: VotedComponent },
 ];
 
 @NgModule({

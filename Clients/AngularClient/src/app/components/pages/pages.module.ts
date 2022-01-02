@@ -7,6 +7,7 @@ import { VoteComponent } from './vote/vote.component';
 import { FormsModule } from '@angular/forms';
 import { ElectionsComponent } from './elections/elections.component';
 import { AdminComponent } from './admin/admin.component';
+import { VotedComponent } from './voted/voted.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     VoteComponent,
     ElectionsComponent,
-    AdminComponent
+    AdminComponent,
+    VotedComponent
   ],
   imports: [
     CommonModule,

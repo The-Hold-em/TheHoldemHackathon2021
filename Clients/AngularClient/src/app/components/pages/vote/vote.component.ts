@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cryptography } from 'src/app/models/cryptography';
 import { Vote } from 'src/app/models/vote.model';
 import { CandidateService } from 'src/app/services/candidate/candidate.service';
@@ -21,7 +22,7 @@ export class VoteComponent implements OnInit {
   publicKey: string = "";
   privateKey: string = "";
   candidateId: any;
-  constructor(private pollingStationService: PollingstationService) { }
+  constructor(private pollingStationService: PollingstationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCandidate();
@@ -41,7 +42,10 @@ export class VoteComponent implements OnInit {
         candinateId: vote.candinateId,
         signature: vote.signature
       }
-    ).subscribe();
+    ).subscribe(() => {
+      this.router.navigate(["voted"])
+    });
+
   }
 
   generateKeyPair() {
