@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cryptography } from 'src/app/models/cryptography';
 import { Vote } from 'src/app/models/vote.model';
+import { CandidateService } from 'src/app/services/candidate/candidate.service';
 import { PollingstationService } from 'src/app/services/pollingstation/pollingstation.service';
+
 declare let $: any;
 @Component({
   selector: 'app-vote',
@@ -11,30 +14,18 @@ declare let $: any;
 export class VoteComponent implements OnInit {
 
   candidates = [{
-    id: "d57f351504f645b381bd9b620c134808",
-    name: "Recep"
-  }, {
-    id: "1a70dbd3230c43c8b654c72be17cd370",
-    name: "Ömer"
-  }, {
-    id: "eadd0b78a6d94cf88dac1012d1566a3d",
-    name: "Hikmet"
-  }, {
-    id: "2f28503a0e104adf89ae02ec676870df",
-    name: "İrfan"
-  }, {
-    id: "4c366ae228bf4e2f8264831885ea096d",
-    name: "Elizabeth Olsen"
-  }
-  ]
+    id: "",
+    name: ""
+  }]
 
   radioinput: any;
   publicKey: string = "";
   privateKey: string = "";
   candidateId: any;
-  constructor(private pollingStationService: PollingstationService) { }
+  constructor(private pollingStationService: PollingstationService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getCandidate();
   }
 
   setCandidateId(candinateId: any) {
@@ -43,6 +34,7 @@ export class VoteComponent implements OnInit {
   async sendVote() {
     this.generateKeyPair();
     var vote = await new Vote(this.publicKey, this.privateKey, this.candidateId);
+    console.log(vote);
 
     await this.pollingStationService.sendVote(
       {
@@ -50,7 +42,10 @@ export class VoteComponent implements OnInit {
         candinateId: vote.candinateId,
         signature: vote.signature
       }
-    ).subscribe();
+    ).subscribe(() => {
+      this.router.navigate(["voted"])
+    });
+
   }
 
   generateKeyPair() {
@@ -62,20 +57,29 @@ export class VoteComponent implements OnInit {
     console.log("privateKey:" + this.privateKey);
   }
 
+  async getCandidate() {
+    var candidateService = new CandidateService();
+    var result = await candidateService.getCandidate();
+    this.candidates = result.data;
+    console.log(this.candidates);
+
+  }
   ngAfterViewInit() {
     $(document).ready(() => {
-      $('input[type="radio"]').on("change", function (e: any) {
-        var candidate = $(e.target).parents(".candidate")[0];
-        $(".candidate").removeClass("active");
-        $(candidate).addClass("active");
-      });
-      $(".circle").on("click", function (e: any) {
-        var radio = $(e.target).find('input[type="radio"]');
-        console.log();
+      setTimeout(() => {
+        $('input[type="radio"]').on("change", function (e: any) {
+          var candidate = $(e.target).parents(".candidate")[0];
+          $(".candidate").removeClass("active");
+          $(candidate).addClass("active");
+        });
+        $(".circle").on("click", function (e: any) {
+          var radio = $(e.target).find('input[type="radio"]');
+          console.log(radio);
+          radio.checked = true;
+          $(radio).trigger("change");
+        });
+      }, 100);
 
-        radio.checked = true;
-        $(radio).trigger("change");
-      });
     });
 
   }

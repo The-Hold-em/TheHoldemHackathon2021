@@ -1,1 +1,86 @@
-<p>home works!</p>
+<div class="page">
+  <div class="container">
+    <div class="text-button">
+      <div class="text">
+        <h1>Oy kullanmanın dünyadaki en güvenli yolu.</h1>
+        <h4>
+          Kimliğinizi doğrulayarak oy kullanabileceğiniz yeni bir dönem
+          başlıyor.
+        </h4>
+      </div>
+
+      <div *ngIf="!isLogin" class="buttons">
+        <button routerLink="/register">Kayıt Ol</button>
+        <button routerLink="/login">Giriş Yap</button>
+      </div>
+      <div *ngIf="isLogin" class="buttons">
+        <button routerLink="/elections">Başla</button>
+      </div>
+    </div>
+    <div class="arrows">
+      <a href="#teams">
+        <span class="span-1"></span>
+        <span class="span-2"></span>
+        <span class="span-3"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="transitions">
+    <h1>Takım Üyeleri</h1>
+  </div>
+
+  <div class="teamscontainer">
+    <div class="content" id="teams">
+      <div class="content-img content-img-1"></div>
+      <div class="about">
+        <h1>Recep Şen</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          consequat, nunc nec elementum suscipit, purus augue fermentum augue,
+          sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id
+          leo vitae, fermentum volutpat est. In ligula neque, tempus ac quam.
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="about">
+        <h1>Ömer Özoğlu</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          consequat, nunc nec elementum suscipit, purus augue fermentum augue,
+          sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id
+          leo vitae, fermentum volutpat est. In ligula neque, tempus ac quam.
+        </p>
+      </div>
+      <div class="content-img content-img-2"></div>
+    </div>
+
+    <div class="content">
+      <div class="content-img content-img-3"></div>
+      <div class="about">
+        <h1>Hikmet Gezmen</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          consequat, nunc nec elementum suscipit, purus augue fermentum augue,
+          sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id
+          leo vitae, fermentum volutpat est. In ligula neque, tempus ac quam.
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="about">
+        <h1>İrfan Yunus Soydan</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          consequat, nunc nec elementum suscipit, purus augue fermentum augue,
+          sed efficitur quam velit et lorem. Aliquam urna magna, fermentum id
+          leo vitae, fermentum volutpat est. In ligula neque, tempus ac quam.
+        </p>
+      </div>
+      <div class="content-img content-img-4"></div>
+    </div>
+  </div>
+</div>

@@ -26,12 +26,8 @@ class Blockchain {
     return this.chain.find((block) => block.index == id);
   }
 
-  addVoteList(voteList) {
-    this.voteList = new VoteList(
-      voteList.pollingStationPublicKey,
-      voteList.signature,
-      voteList.votes
-    );
+  addVoteList(pollingStationPublicKey, signature, votes) {
+    this.voteList = new VoteList(pollingStationPublicKey, signature, votes);
   }
 
   mineVoteList() {
@@ -49,8 +45,25 @@ class Blockchain {
   }
 
   getVoteResults() {
-    var counts;
-    return counts;
+    let votes = [];
+    State.Blockchain.chain.forEach((x) => {
+      if (x.votelist != "0") votes.push(...x.votelist.votes);
+    });
+    console.log("VOTES", votes);
+    var result = [];
+    votes.forEach((x) => {
+      var found = result.find((r) => r.id == x.candinateId);
+      if (found) {
+        found.count++;
+      } else {
+        found = {
+          id: x.candinateId,
+          count: 1,
+        };
+        result.push(found);
+      }
+    });
+    return result;
   }
 
   isChainVaild() {

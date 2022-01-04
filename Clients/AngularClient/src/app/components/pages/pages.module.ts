@@ -5,12 +5,18 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { VoteComponent } from './vote/vote.component';
 import { FormsModule } from '@angular/forms';
+import { ElectionsComponent } from './elections/elections.component';
+import { AdminComponent } from './admin/admin.component';
+import { VotedComponent } from './voted/voted.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    VoteComponent
+    VoteComponent,
+    ElectionsComponent,
+    AdminComponent,
+    VotedComponent
   ],
   imports: [
     CommonModule,

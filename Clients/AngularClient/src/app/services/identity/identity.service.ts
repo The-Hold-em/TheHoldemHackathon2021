@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import axios, { AxiosRequestConfig } from 'axios';
 import * as querystring from 'querystring';
-import clientInfo from './clientInfo.js';
-import store from './store.js';
-import CenteralRequest, { ApiResponse } from './centeralRequest.js';
+import clientInfo from './clientInfo';
+import store from './store';
+import CenteralRequest, { ApiResponse } from './centeralRequest';
 const axiosConfig: any = {
   baseURL: clientInfo.BaseUrl,
   timeout: 30000,
