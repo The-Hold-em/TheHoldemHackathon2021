@@ -1,24 +1,21 @@
-const SHA256 = require("crypto-js/sha256.js");
-var State = require("../helpers/state");
-const { Vote } = require("../models/vote");
+const { Vote, CalculateHash, IsVaild } = require("../models/Vote");
+const { Server } = require("../models/Server");
 const { ElectionTimer } = require("../services/timer");
 
 exports.recevie_vote = (req, res, next) => {
   const publicKey = req.body.publicKey;
   const candinateId = req.body.candinateId;
   const signature = req.body.signature;
-  var vote = new Vote(publicKey, candinateId, signature);
-  if (vote.isValid()) {
-    State.votes.push({
-      publicKey: req.body.publicKey,
-      candinateId: req.body.candinateId,
-      signature: req.body.signature,
+
+  if (IsVaild()) {
+    Vote.create({
+      votePublicKey: publicKey,
+      candinateId: candinateId,
+      voteSignature: signature,
+      voteHash: CalculateHash(publicKey + candinateId + signature),
     });
-    State.voteListHash.push(
-      SHA256(publicKey + candinateId + signature).toString()
-    );
     return res.status(200).json({
-      Message: "This vote is successfully validated",
+      Message: "This vote validation is success",
     });
   } else {
     return res.status(409).json({
@@ -28,11 +25,26 @@ exports.recevie_vote = (req, res, next) => {
 };
 
 exports.start_polling_station = (req, res, next) => {
-  const state = req.body.state;
+  const pollingStationID = req.body.pollingStationID;
   const period = req.body.period;
+  const state = true;
+
+  const filter = {
+    _id = pollingStationID
+  }
+  const update = {
+    serverStatus:state,
+    serverStartTime:new Date().toISOString().
+    replace(/T/, ' ').      // replace T with a space
+    replace(/\..+/, '')     // delete the dot and everything after
+  }
+  
+  Server.findByIdAndUpdate(filter,update,{new:true});
+  return res.status(200).json({
+    Message: "Polling station started",
+  });
 
   if (state === 1) {
-    State.serverStatus = true;
     State.electionTimer = new ElectionTimer(state, period);
     State.electionTimer.startElection();
     return res.status(200).json({
@@ -45,6 +57,27 @@ exports.start_polling_station = (req, res, next) => {
       Message: "Election stopped",
     });
   }
+};
+
+exports.stop_polling_station = (req, res, next) => {
+  const pollingStationID = req.body.pollingStationID;
+  const period = req.body.period;
+  const state = false;
+  
+  const filter = {
+    _id = pollingStationID
+  }
+  const update = {
+    serverStatus:state,
+    serverEndTime:new Date().toISOString().
+    replace(/T/, ' ').      // replace T with a space
+    replace(/\..+/, '')     // delete the dot and everything after
+  }
+  
+  Server.findByIdAndUpdate(filter,update,{new:true});
+  return res.status(200).json({
+    Message: "Polling station started",
+  });
 };
 
 exports.get_server_status = (req, res, next) => {

@@ -1,30 +1,49 @@
 const SHA256 = require("crypto-js/sha256.js");
 const EC = require("elliptic");
 const ec = EC.ec("secp256k1");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-class Vote {
-  constructor(publicKey, candinateId, signature) {
-    this.publicKey = publicKey;
-    this.candinateId = candinateId;
-    this.signature = signature;
+const voteSchema = new Schema({
+  votePublicKey: {
+    type: String,
+    required: true,
+    length: [130, "votePublicKey length's is must be 130 characters"],
+  },
+  candinateId: { type: String, required: true },
+  voteSignature: {
+    type: String,
+    required: true,
+    length: [140, "voteSignature length's is must be 140 characters"],
+  },
+  voteHash: {
+    type: String,
+    required: false,
+    length: [256, "voteHash length's is must be 256 characters"],
+  },
+});
+
+const calculateHash = (data) => {
+  return SHA256(data).toString();
+};
+
+/** isVaild fonksiyonu clientden gelen oyun doğruluğunu kontrol eder */
+const isVaild = (publicKey, candinateId, signature) => {
+  if (publicKey === null || candinateId === null) {
+    return false;
   }
-  calculateHash() {
-    return SHA256(this.candinateId).toString();
+
+  if (!signature || signature.length === 0) {
+    throw new Error("No signature in this vote");
   }
+  var calculateHash = this.calculateHash(candinateId);
+  const pk = ec.keyFromPublic(publicKey, "hex");
 
-  isValid() {
-    if (this.publicKey === null || this.candinateId === null) {
-      return false;
-    }
+  return pk.verify(calculateHash, signature);
+};
 
-    if (!this.signature || this.signature.length === 0) {
-      throw new Error("No signature in this vote");
-    }
-    var calculateHash = this.calculateHash();
-    const publicKey = ec.keyFromPublic(this.publicKey, "hex");
-
-    return publicKey.verify(calculateHash, this.signature);
-  }
-}
-
-module.exports.Vote = Vote;
+module.exports = {
+  Vote: mongoose.model("Vote", voteSchema),
+  CalculateHash: calculateHash,
+  IsVaild: isVaild,
+};
