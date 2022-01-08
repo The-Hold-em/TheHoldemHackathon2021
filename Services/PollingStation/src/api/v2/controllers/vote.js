@@ -1,14 +1,19 @@
-const { Vote } = require("../models/vote");
+const { Vote, CalculateHash, IsVaild } = require("../models/Vote");
 
-const recevie_vote = (req, res) => {
+exports.recevie_vote = (req, res, next) => {
   const publicKey = req.body.publicKey;
   const candinateId = req.body.candinateId;
   const signature = req.body.signature;
-  var vote = new Vote(publicKey, candinateId, signature);
-  if (vote.isValid()) {
-    //mongo db migration oluştur ve mongodbye kayıt et lokal olarak
+
+  if (IsVaild()) {
+    Vote.create({
+      votePublicKey: publicKey,
+      candinateId: candinateId,
+      voteSignature: signature,
+      voteHash: CalculateHash(publicKey + candinateId + signature),
+    });
     return res.status(200).json({
-      Message: "This vote is successfully validated",
+      Message: "This vote validation is success",
     });
   } else {
     return res.status(409).json({
@@ -16,5 +21,3 @@ const recevie_vote = (req, res) => {
     });
   }
 };
-
-module.exports = [recevie_vote];

@@ -1,2 +1,2 @@
 const { ElectionTimer } = require("../services/timer");
-exports.electionTimer = new ElectionTimer();
+//module.exports.electionTimer = new ElectionTimer();
