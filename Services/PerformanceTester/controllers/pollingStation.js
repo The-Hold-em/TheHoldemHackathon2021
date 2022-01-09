@@ -18,10 +18,9 @@ axios.interceptors.response.use(x => {
 const startTest = async (req, res) => {
     const candidates = await getCandidates();
     const requests = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 100; i++) {
         let candidate = candidates[Math.floor(Math.random() * candidates.length)];
         let vote = generateVote(candidate.id);
-        console.log(vote);
         // requests.push(axios.post("http://localhost:3008/pollingStation", vote));
         requests.push(axios.post("http://192.168.43.254:3000/pollingstation/recevieVote", vote));
     }
