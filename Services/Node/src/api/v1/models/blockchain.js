@@ -6,7 +6,7 @@ const State = require("../helpers/state");
 class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
-    this.difficulty = 4;
+    this.difficulty = 5;
     this.voteList = new VoteList();
   }
 
@@ -38,6 +38,7 @@ class Blockchain {
       this.voteList.calculateHash(),
       this.getLatestBlock().hash
     );
+
     block.mineBlock(this.difficulty);
 
     console.log("Block succesfully mined");

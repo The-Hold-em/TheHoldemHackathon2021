@@ -20,7 +20,9 @@
     "dotenv": "^10.0.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.2",
+    "inspector-api": "^1.4.3",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
     "setinterval": "^0.2.4"
   }
 }
