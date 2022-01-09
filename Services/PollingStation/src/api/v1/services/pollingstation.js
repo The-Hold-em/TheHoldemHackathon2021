@@ -9,17 +9,38 @@ exports.SendVoteList = () => {
   State.votes = [];
   State.voteListHash = [];
   if (data && data !== null && data.length > 0) {
-    axios
-      .post("http://localhost:5000/node/receiveVoteList", {
+    axios({
+      method: "post",
+      url: "http://localhost:5000/node/receiveVoteList",
+      data: {
         pollingStationPublicKey: publicKey,
         signature: sign,
         votes: data,
-      })
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      maxContentLength: 100000000,
+      maxBodyLength: 1000000000,
+    })
       .then((res) => {
         console.log(`This vote list was successfully sended: ${res.status}`);
       })
       .catch((error) => {
         console.error(error);
       });
+    // axios
+    //   .post("http://localhost:5000/node/receiveVoteList", {
+    //     pollingStationPublicKey: publicKey,
+    //     signature: sign,
+    //     votes: data,
+    //   })
+    //   .then((res) => {
+    //     console.log(`This vote list was successfully sended: ${res.status}`);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   }
 };
