@@ -12,7 +12,7 @@ const NotFound = require("./api/v1/middlewares/404");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use(Cors.cors);
 // Routes which should handle requests
 
