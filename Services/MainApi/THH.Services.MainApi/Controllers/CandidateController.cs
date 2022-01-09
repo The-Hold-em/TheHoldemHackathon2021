@@ -11,6 +11,7 @@ using THH.Shared.Core.ExtensionMethods;
 using THH.Services.MainApi.BLL.DTOs.Delete;
 using THH.Shared.Core.Services.Interfaces;
 using THH.Services.MainApi.BLL.DTOs.Create;
+using Microsoft.AspNetCore.Authorization;
 
 namespace THH.Services.MainApi.Controllers
 {
@@ -40,6 +41,7 @@ namespace THH.Services.MainApi.Controllers
             _mapper = mapper;
             _logger = logger;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
